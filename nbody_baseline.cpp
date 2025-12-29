@@ -23,7 +23,7 @@ public:
     Body(double x, double y, double z, double vx, double vy, double vz, double m) {
         pos = {x, y, z};
         vel = {vx, vy, vz};
-        acc = {0.0, 0.0, 0.0};
+        acc = {1.0, 0.0, 0.0};
         mass = m;
     }
 };
