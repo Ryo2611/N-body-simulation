@@ -7,7 +7,7 @@
 #include <arm_neon.h>
 #endif
 
-#include "quad_tree.hpp"
+#include "oct_tree.hpp"
 
 namespace nbody {
 
@@ -31,7 +31,7 @@ Simulator::Simulator(std::size_t num_particles, double target_mass) {
   for (std::size_t i = 0; i < num_particles; ++i) {
     particles_.x.push_back(pos_dist(rng));
     particles_.y.push_back(pos_dist(rng));
-    particles_.z.push_back(pos_dist(rng));
+    particles_.z.push_back(pos_dist(rng)); // Randomize Z now
     particles_.vx.push_back(vel_dist(rng));
     particles_.vy.push_back(vel_dist(rng));
     particles_.vz.push_back(vel_dist(rng));
@@ -45,15 +45,12 @@ void Simulator::computeForces(std::vector<double> &fx, std::vector<double> &fy,
   std::fill(fy.begin(), fy.end(), 0.0);
   std::fill(fz.begin(), fz.end(), 0.0);
 
-  // Build the Barnes-Hut Tree for the current step
+  // Build the 3D Barnes-Hut Tree for the current step
   // O(N log N) construction
   BarnesHutTree tree(particles_, 0.5); // theta = 0.5 (standard MAC)
 
-  // O(N log N) force calculation (Parallelized via OpenMP inside computeForces)
-  tree.computeForces(fx, fy);
-
-  // Note: z forces are clamped to 0 because QuadTree is 2D.
-  // (In a true 3D sim, we would use an Octree)
+  // O(N log N) force calculation across all 3 spatial dimensions
+  tree.computeForces(fx, fy, fz);
 }
 
 void Simulator::step(double dt) {

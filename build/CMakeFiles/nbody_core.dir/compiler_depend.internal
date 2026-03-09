@@ -831,10 +831,10 @@ CMakeFiles/nbody_core.dir/src/nbody.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
  /Users/watanabemuku/Downloads/B4/N-body_simulation/include/nbody.hpp
- /Users/watanabemuku/Downloads/B4/N-body_simulation/include/quad_tree.hpp
+ /Users/watanabemuku/Downloads/B4/N-body_simulation/include/oct_tree.hpp
 
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o
- /Users/watanabemuku/Downloads/B4/N-body_simulation/src/quad_tree.cpp
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o
+ /Users/watanabemuku/Downloads/B4/N-body_simulation/src/oct_tree.cpp
  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h
@@ -1626,5 +1626,5 @@ CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h
  /Users/watanabemuku/Downloads/B4/N-body_simulation/include/nbody.hpp
- /Users/watanabemuku/Downloads/B4/N-body_simulation/include/quad_tree.hpp
+ /Users/watanabemuku/Downloads/B4/N-body_simulation/include/oct_tree.hpp
 

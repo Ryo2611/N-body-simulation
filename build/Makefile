@@ -310,29 +310,29 @@ src/nbody.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/nbody.cpp.s
 .PHONY : src/nbody.cpp.s
 
-src/quad_tree.o: src/quad_tree.cpp.o
-.PHONY : src/quad_tree.o
+src/oct_tree.o: src/oct_tree.cpp.o
+.PHONY : src/oct_tree.o
 
 # target to build an object file
-src/quad_tree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o
-.PHONY : src/quad_tree.cpp.o
+src/oct_tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o
+.PHONY : src/oct_tree.cpp.o
 
-src/quad_tree.i: src/quad_tree.cpp.i
-.PHONY : src/quad_tree.i
+src/oct_tree.i: src/oct_tree.cpp.i
+.PHONY : src/oct_tree.i
 
 # target to preprocess a source file
-src/quad_tree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/quad_tree.cpp.i
-.PHONY : src/quad_tree.cpp.i
+src/oct_tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/oct_tree.cpp.i
+.PHONY : src/oct_tree.cpp.i
 
-src/quad_tree.s: src/quad_tree.cpp.s
-.PHONY : src/quad_tree.s
+src/oct_tree.s: src/oct_tree.cpp.s
+.PHONY : src/oct_tree.s
 
 # target to generate assembly for a file
-src/quad_tree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/quad_tree.cpp.s
-.PHONY : src/quad_tree.cpp.s
+src/oct_tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nbody_core.dir/build.make CMakeFiles/nbody_core.dir/src/oct_tree.cpp.s
+.PHONY : src/oct_tree.cpp.s
 
 tests/test_nbody.o: tests/test_nbody.cpp.o
 .PHONY : tests/test_nbody.o
@@ -384,9 +384,9 @@ help:
 	@echo "... src/nbody.o"
 	@echo "... src/nbody.i"
 	@echo "... src/nbody.s"
-	@echo "... src/quad_tree.o"
-	@echo "... src/quad_tree.i"
-	@echo "... src/quad_tree.s"
+	@echo "... src/oct_tree.o"
+	@echo "... src/oct_tree.i"
+	@echo "... src/oct_tree.s"
 	@echo "... tests/test_nbody.o"
 	@echo "... tests/test_nbody.i"
 	@echo "... tests/test_nbody.s"

@@ -86,30 +86,30 @@ CMakeFiles/nbody_core.dir/src/nbody.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nbody_core.dir/src/nbody.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/watanabemuku/Downloads/B4/N-body_simulation/src/nbody.cpp -o CMakeFiles/nbody_core.dir/src/nbody.cpp.s
 
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o: CMakeFiles/nbody_core.dir/flags.make
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o: /Users/watanabemuku/Downloads/B4/N-body_simulation/src/quad_tree.cpp
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o: CMakeFiles/nbody_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o -MF CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o.d -o CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o -c /Users/watanabemuku/Downloads/B4/N-body_simulation/src/quad_tree.cpp
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o: CMakeFiles/nbody_core.dir/flags.make
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o: /Users/watanabemuku/Downloads/B4/N-body_simulation/src/oct_tree.cpp
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o: CMakeFiles/nbody_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o -MF CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o.d -o CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o -c /Users/watanabemuku/Downloads/B4/N-body_simulation/src/oct_tree.cpp
 
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nbody_core.dir/src/quad_tree.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/watanabemuku/Downloads/B4/N-body_simulation/src/quad_tree.cpp > CMakeFiles/nbody_core.dir/src/quad_tree.cpp.i
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nbody_core.dir/src/oct_tree.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/watanabemuku/Downloads/B4/N-body_simulation/src/oct_tree.cpp > CMakeFiles/nbody_core.dir/src/oct_tree.cpp.i
 
-CMakeFiles/nbody_core.dir/src/quad_tree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nbody_core.dir/src/quad_tree.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/watanabemuku/Downloads/B4/N-body_simulation/src/quad_tree.cpp -o CMakeFiles/nbody_core.dir/src/quad_tree.cpp.s
+CMakeFiles/nbody_core.dir/src/oct_tree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nbody_core.dir/src/oct_tree.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/watanabemuku/Downloads/B4/N-body_simulation/src/oct_tree.cpp -o CMakeFiles/nbody_core.dir/src/oct_tree.cpp.s
 
 # Object files for target nbody_core
 nbody_core_OBJECTS = \
 "CMakeFiles/nbody_core.dir/src/nbody.cpp.o" \
-"CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o"
+"CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o"
 
 # External object files for target nbody_core
 nbody_core_EXTERNAL_OBJECTS =
 
 libnbody_core.a: CMakeFiles/nbody_core.dir/src/nbody.cpp.o
-libnbody_core.a: CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o
+libnbody_core.a: CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o
 libnbody_core.a: CMakeFiles/nbody_core.dir/build.make
 libnbody_core.a: CMakeFiles/nbody_core.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libnbody_core.a"

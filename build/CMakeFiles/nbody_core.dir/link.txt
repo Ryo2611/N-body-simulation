@@ -1,2 +1,2 @@
-/usr/bin/ar qc libnbody_core.a CMakeFiles/nbody_core.dir/src/nbody.cpp.o CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o
+/usr/bin/ar qc libnbody_core.a CMakeFiles/nbody_core.dir/src/nbody.cpp.o CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o
 /usr/bin/ranlib libnbody_core.a

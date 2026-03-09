@@ -30,7 +30,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 include_directories(include)
 
 # Core Simulation Library
-add_library(nbody_core src/nbody.cpp src/quad_tree.cpp)
+add_library(nbody_core src/nbody.cpp src/oct_tree.cpp)
 target_link_libraries(nbody_core PRIVATE OpenMP::OpenMP_CXX)
 
 # Main Executable

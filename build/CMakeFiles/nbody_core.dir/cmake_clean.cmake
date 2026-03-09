@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/nbody_core.dir/src/nbody.cpp.o"
   "CMakeFiles/nbody_core.dir/src/nbody.cpp.o.d"
-  "CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o"
-  "CMakeFiles/nbody_core.dir/src/quad_tree.cpp.o.d"
+  "CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o"
+  "CMakeFiles/nbody_core.dir/src/oct_tree.cpp.o.d"
   "libnbody_core.a"
   "libnbody_core.pdb"
 )

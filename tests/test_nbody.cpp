@@ -34,7 +34,7 @@ TEST(NBodySimTest, TwoBodyInteractionForceCorrectness) {
 // Note: Barnes-Hut approximation breaks perfect symmetry (Newton's 3rd Law),
 // so momentum conservation is not exact. We check with a relaxed tolerance.
 TEST(NBodySimTest, MomentumConservation) {
-  Simulator sim(50, 1.0);
+  Simulator sim(200, 1.0);
 
   auto calculate_momentum = [](const Particles &parts) {
     double px = 0, py = 0, pz = 0;
