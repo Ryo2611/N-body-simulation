@@ -2380,3 +2380,42 @@ events:
         
       exitCode: 2
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/FindOpenMP.cmake:574 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/FindOpenMP.cmake:714 (_OPENMP_GET_SPEC_DATE)"
+      - "CMakeLists.txt:27 (find_package)"
+    description: "Detecting CXX OpenMP version"
+    directories:
+      source: "/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles/CMakeScratch/TryCompile-NPaM1Q"
+      binary: "/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles/CMakeScratch/TryCompile-NPaM1Q"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-Wall -Wextra -pedantic -Werror"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "OpenMP_SPECTEST_CXX_"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles/CMakeScratch/TryCompile-NPaM1Q'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_76aa0/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_76aa0.dir/build.make CMakeFiles/cmTC_76aa0.dir/build
+        Building CXX object CMakeFiles/cmTC_76aa0.dir/OpenMPCheckVersion.cpp.o
+        /usr/bin/c++   -Wall -Wextra -pedantic -Werror -Xpreprocessor -fopenmp -std=c++17 -arch arm64 -MD -MT CMakeFiles/cmTC_76aa0.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_76aa0.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_76aa0.dir/OpenMPCheckVersion.cpp.o -c /Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles/CMakeScratch/TryCompile-NPaM1Q/OpenMPCheckVersion.cpp
+        /Users/watanabemuku/Downloads/B4/N-body_simulation/build/CMakeFiles/CMakeScratch/TryCompile-NPaM1Q/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+            3 | #include <omp.h>
+              |          ^~~~~~~
+        1 error generated.
+        make[1]: *** [CMakeFiles/cmTC_76aa0.dir/OpenMPCheckVersion.cpp.o] Error 1
+        make: *** [cmTC_76aa0/fast] Error 2
+        
+      exitCode: 2
+...
