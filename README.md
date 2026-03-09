@@ -11,36 +11,37 @@ This project iteratively optimizes a naive $O(N^2)$ algorithm down to an $O(N \l
 
 ---
 
-## 🚀 最適化プロセスとベンチマーク結果 (Optimization Journey)
+## 🚀 Optimization Journey & Benchmarks
 
-当シミュレーションは、計算コストが膨大となるN体問題をソフトウェアエンジニアリングおよび低レイヤー最適化の観点から高速化したものです。すべてのベンチマークはApple Silicon (`arm64`) 環境（`-O3 -mcpu=apple-m1` フラグ有効化）で計測されています。
+This simulation demonstrates addressing massive computational complexity through a low-level systems engineering approach. All benchmarks were recorded on an Apple Silicon (`arm64`) architecture with `-O3 -mcpu=apple-m1` compiler flags enabled.
 
-### 1. ナイーブなベースライン実装 ($O(N^2)$)
-- **データ構造**: Array of Structures (AoS) - `std::vector<Particle>`
-- **アルゴリズム**: すべての粒子間の重力を直接計算する総当たり方式
-- **パフォーマンス**: $N=2,000$ 粒子の場合、1ステップあたり **~51 ms**。10,000粒子以上の大規模シミュレーションは実用不可能な計算量。
+### 1. Naive Baseline Implementation ($O(N^2)$)
+- **Data Structure**: Array of Structures (AoS) - `std::vector<Particle>`
+- **Algorithm**: Brute-force all-pairs gravity calculation.
+- **Performance**: Computing $N=2,000$ particles took **~51 ms** per step. Scaling to 10,000+ particles was computationally impractical.
 
-### 2. キャッシュ局所性の向上 (Structure of Arrays - SoA)
-- **データ構造**: 要素ごとの配列 (SoA) - `Particles` 構造体内に `x, y, z` 座標や `vx, vy, vz` 速度を個別の等間隔な配列(`std::vector<double>`)として保存
-- **目的と効果**: L1/L2キャッシュミスを劇的に削減。例えば、X座標の力を計算する際、CPUは使用しないY/Zや速度のデータをメモリからフェッチすることなく、必要なベクトルのみをキャッシュラインにロードできます。
+### 2. Cache Locality Improvement (Structure of Arrays - SoA)
+- **Data Structure**: Structure of Arrays (SoA) - Refactored `Particles` to hold contiguous vectors (`std::vector<double>`) for `x`, `y`, `z`, `vx`, `vy`, and `vz`.
+- **Impact**: Drastically reduced L1/L2 cache misses. When computing forces along the X-axis, the CPU can load solely position vectors into cache lines without unpacking unnecessary interleaved data (like velocities or Y/Z components).
 
-### 3. SIMD ベクトル化 & マルチスレッド化 (ARM NEON + OpenMP)
-- **SIMD (単一命令複数データ処理)**: **ARM NEON Intrinsics** (`<arm_neon.h>`) を導入し、128-bitレジスタ（`float64x2_t`）で2つの倍精度浮動小数点数（`double`）を1クロックで同時処理。
-- **マルチスレッド**: `#pragma omp parallel for` を使用して、重力計算の最外ループをCPUの物理コア全体（Homebrewの `libomp` 使用）にスレッド分散。
-- **パフォーマンス**: SoA・SIMD・OpenMPの相乗効果により、$N=2,000$ の処理速度が **~1.7 ms** に短縮 **(ベースライン比 約30倍の高速化)**。
+### 3. SIMD Vectorization & Multi-threading (ARM NEON + OpenMP)
+- **SIMD (Single Instruction, Multiple Data)**: Integrated **ARM NEON Intrinsics** (`<arm_neon.h>`) to process two double-precision floats (`float64x2_t`) simultaneously in a single 128-bit clock cycle.
+- **Multi-threading**: Utilized `#pragma omp parallel for` via Homebrew's `libomp` to distribute the outermost gravity evaluation loops across all physical CPU cores dynamically.
+- **Performance**: The synergy of SoA, SIMD, and OpenMP reduced the step time for $N=2,000$ to **~1.7 ms** **(a ~30x geometric speedup from baseline)**.
 
-### 4. アルゴリズム最適化 (3D Barnes-Hut Octree)
-- **アルゴリズム**: ハードウェア限界を突破するため、3D空間を再帰的に8分割する **Octree（八分木）** を実装。遠方にある粒子群の重心（Center of Mass）を一つの巨大な質点として近似計算（Multipole Acceptance Criterion: $\theta < 0.5$）。
-- **計算量**: 空間分割木により $O(N^2)$ から **$O(N \log N)$** に削減。
-- **パフォーマンス**: **100,000粒子 (3D空間)** を1ステップ **~255 ms** で処理可能に。$O(N^2)$ エンジンでは数時間かかる計算をリアルタイムに近い速度で処理できる次元へとスケーリングを証明しました。
+### 4. Algorithmic Scaling (3D Barnes-Hut Octree)
+- **Algorithm**: To break through hardware limitations, we implemented an **Octree**, recursively dividing the 3D space into 8 octants. Distant particle clusters are approximated as a single massive center of mass using the Multipole Acceptance Criterion ($\theta < 0.5$).
+- **Complexity**: Slashed algorithmic cost from $O(N^2)$ down to **$O(N \log N)$**.
+- **Performance**: The engine can now simulate **100,000 particles (in 3D)** at **~255 ms** per step, bringing calculations that would take hours on the naive engine down to near real-time timescales.
 
 ---
 
-## 🛠 プロジェクト構成 (Architecture & Tools)
-- **言語**: C++17
-- **コンパイル設定**: 厳格な警告基準によるクリーンビルド (`-Wall -Wextra -Werror -pedantic`)
-- **ビルドシステム**: CMake (3.14+)
-- **ユニットテスト**: GoogleTest (`FetchContent` にて自動構成)。「運動量保存則」などの物理的整合性が保たれているかを自動的にテストします（Barnes-Hut のマクロレベルの近似誤差許容も考慮済）。
+## 🛠 Project Architecture
+
+- **Language**: Standard C++17
+- **Compiler Config**: Strict clean builds targeting `-Wall -Wextra -Werror -pedantic`.
+- **Build System**: CMake (3.14+)
+- **Unit Testing**: GoogleTest (configured via `FetchContent`). Ensures physical integrity (e.g., verifying Momentum Conservation within the acceptable tolerance bounds of the algorithmic MAC approximation).
 
 ```text
 ├── CMakeLists.txt
@@ -48,38 +49,39 @@ This project iteratively optimizes a naive $O(N^2)$ algorithm down to an $O(N \l
 │   ├── nbody.hpp      # Simulator engine definitions
 │   └── oct_tree.hpp   # 3D Barnes-Hut octree definitions
 ├── src/
-│   ├── main.cpp       # Entry point
-│   ├── nbody.cpp      # Integrator & Simulation body
-│   └── oct_tree.cpp   # Octree construction & forces calculation
+│   ├── main.cpp       # Entry point & benchmark suite
+│   ├── nbody.cpp      # Integrator & core simulation body
+│   └── oct_tree.cpp   # Octree construction & force approximation algorithms
 └── tests/
     └── test_nbody.cpp # GoogleTest Suite
 ```
 
 ---
 
-## 💻 ビルドと実行方法 (Quick Start)
+## 💻 Quick Start Guide
 
-### 前提要件 (macOS / Apple Silicon 向け)
-OpenMPライブラリをインストールします。
+### Prerequisites (macOS / Apple Silicon)
+Ensure OpenMP and CMake are installed via Homebrew.
 ```bash
 brew install cmake libomp
 ```
 
-### ビルド手順
-CMakeを使って最適化ビルド(`Release`)を生成します。
+### Build Instructions
+Generate the highly optimized production build output.
 ```bash
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j8
 ```
 
-### シミュレーションの実行
+### Run the Benchmark Simulation
+Execute the core logic directly via the terminal.
 ```bash
 ./nbody_sim
 ```
 
-### ユニットテストの実行
-シミュレーションの整合性チェックを行います。
+### Run the Test Suite
+Validate the physical integrity of the N-Body numerical integrator.
 ```bash
 ./nbody_tests
 ```
