@@ -1,0 +1,27 @@
+{
+  "tests": 3,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "NBodySimTest",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "Initialization",
+          "file": "\/Users\/watanabemuku\/Downloads\/B4\/N-body_simulation\/tests\/test_nbody.cpp",
+          "line": 7
+        },
+        {
+          "name": "TwoBodyInteractionForceCorrectness",
+          "file": "\/Users\/watanabemuku\/Downloads\/B4\/N-body_simulation\/tests\/test_nbody.cpp",
+          "line": 13
+        },
+        {
+          "name": "MomentumConservation",
+          "file": "\/Users\/watanabemuku\/Downloads\/B4\/N-body_simulation\/tests\/test_nbody.cpp",
+          "line": 36
+        }
+      ]
+    }
+  ]
+}

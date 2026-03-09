@@ -1,0 +1,5 @@
+if(EXISTS "/Users/watanabemuku/Downloads/B4/N-body_simulation/build/nbody_tests[1]_tests.cmake")
+  include("/Users/watanabemuku/Downloads/B4/N-body_simulation/build/nbody_tests[1]_tests.cmake")
+else()
+  add_test(nbody_tests_NOT_BUILT nbody_tests_NOT_BUILT)
+endif()
